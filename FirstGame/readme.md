@@ -1,0 +1,2 @@
+# FirstGame
+First contact with Unity. Developed with C#, and following the video playlist from Brackeys ["How to make a Video Game"](https://www.youtube.com/watch?v=j48LtUkZRjU&list=PLPV2KyIb3jR53Jce9hP7G5xC4O9AgnOuL).
