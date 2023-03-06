@@ -1,20 +1,7 @@
-#include "utils.cpp"
 #include <Windows.h>
-
-global_variable bool running = true;
-
-struct Render_State {
-	int height, width;
-	void* memory;
-
-	BITMAPINFO bitmap_info;
-};
-
-global_variable Render_State render_state;
-
-#include "renderer.cpp"
-#include "platform_common.cpp"
-#include "game.cpp"
+#include "utils.h"
+#include "render.h"
+#include "game.h"
 
 /**
  * Callback for the Window
@@ -32,27 +19,27 @@ LRESULT CALLBACK window_callback(
 	switch (uMsg) {
 		case WM_CLOSE:
 		case WM_DESTROY: {
-			running = false;
+			Game::GAME_RUNNING = false;
 		} break;
 
 		case WM_SIZE: {
 			RECT rect;
 			GetClientRect(hwnd, &rect);
-			render_state.width = rect.right - rect.left;
-			render_state.height = rect.bottom - rect.top;
+			Render::RENDER_STATE.WND_WIDTH = rect.right - rect.left;
+			Render::RENDER_STATE.WND_HEIGHT = rect.bottom - rect.top;
 
-			int buffer_size = render_state.width * render_state.height * (sizeof(u32));
+			int buffer_size = Render::RENDER_STATE.WND_WIDTH * Render::RENDER_STATE.WND_HEIGHT * (sizeof(Utils::u32));
 
-			if (render_state.memory) VirtualFree(render_state.memory, 0, MEM_RELEASE);
-			render_state.memory = VirtualAlloc(0, buffer_size, MEM_COMMIT |MEM_RESERVE, PAGE_READWRITE);
+			if (Render::RENDER_STATE.WND_MEMORY) VirtualFree(Render::RENDER_STATE.WND_MEMORY, 0, MEM_RELEASE);
+			Render::RENDER_STATE.WND_MEMORY = VirtualAlloc(0, buffer_size, MEM_COMMIT |MEM_RESERVE, PAGE_READWRITE);
 
 			// Docs of bitmap_info: https://learn.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmap_infoheader
-			render_state.bitmap_info.bmiHeader.biSize = sizeof(render_state.bitmap_info.bmiHeader);
-			render_state.bitmap_info.bmiHeader.biWidth = render_state.width;
-			render_state.bitmap_info.bmiHeader.biHeight = render_state.height;
-			render_state.bitmap_info.bmiHeader.biPlanes = 1;
-			render_state.bitmap_info.bmiHeader.biBitCount = 32;
-			render_state.bitmap_info.bmiHeader.biCompression = BI_RGB;
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biSize = sizeof(Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader);
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biWidth = Render::RENDER_STATE.WND_WIDTH;
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biHeight = Render::RENDER_STATE.WND_HEIGHT;
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biPlanes = 1;
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biBitCount = 32;
+			Render::RENDER_STATE.WND_BITMAPINFO.bmiHeader.biCompression = BI_RGB;
 
 		} break;
 
@@ -104,5 +91,5 @@ int WinMain(
 	
 
 	// Game loop
-	run_game(window);
+	Game::runGame(&window);
 }

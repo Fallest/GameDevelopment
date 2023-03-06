@@ -1,14 +1,1 @@
-﻿  win32_platform.cpp
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\win32_platform.cpp(4,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\win32_platform.cpp(13,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(1,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(11,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(26,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(32,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(40,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(41,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(43,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\renderer.cpp(43,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\game.cpp(8,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\game.cpp(20,1): warning C4091: 'static ': ignored on left of 'int' when no variable is declared
-  FirstCPPGame.vcxproj -> C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\x64\Debug\FirstCPPGame.exe
+﻿  FirstCPPGame.vcxproj -> C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\x64\Debug\FirstCPPGame.exe

@@ -1,9 +1,9 @@
-struct Button_State {
+struct ButtonState {
 	bool is_down;
 	bool changed;
 };
 
-enum {
+enum ButtonsEnum {
 	BUTTON_UP,
 	BUTTON_DOWN,
 	BUTTON_LEFT,
@@ -13,11 +13,5 @@ enum {
 };
 
 struct Input {
-	Button_State buttons[BUTTON_COUNT];
+	ButtonState buttons[BUTTON_COUNT];
 };
-
-#define process_button(b, vk)\
-case vk: {\
-	input.buttons[b].is_down = is_down;\
-	input.buttons[b].changed = true;\
-} break;
