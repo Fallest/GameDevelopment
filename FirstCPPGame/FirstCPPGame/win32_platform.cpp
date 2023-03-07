@@ -1,6 +1,6 @@
 #include <Windows.h>
-#include "utils.h"
 #include "render.h"
+#include "utils.h"
 #include "game.h"
 
 /**
@@ -27,7 +27,7 @@ LRESULT CALLBACK window_callback(
 			GetClientRect(hwnd, &rect);
 			Render::RENDER_STATE.WND_WIDTH = rect.right - rect.left;
 			Render::RENDER_STATE.WND_HEIGHT = rect.bottom - rect.top;
-
+			Render::RENDER_STATE.WND_ASPECT_RATIO = (float)Render::RENDER_STATE.WND_WIDTH / (float)Render::RENDER_STATE.WND_HEIGHT;
 			int buffer_size = Render::RENDER_STATE.WND_WIDTH * Render::RENDER_STATE.WND_HEIGHT * (sizeof(Utils::u32));
 
 			if (Render::RENDER_STATE.WND_MEMORY) VirtualFree(Render::RENDER_STATE.WND_MEMORY, 0, MEM_RELEASE);

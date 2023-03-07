@@ -7,6 +7,7 @@ namespace Render {
 
 struct RenderState {
 	int WND_HEIGHT, WND_WIDTH;
+	float WND_ASPECT_RATIO;
 	void* WND_MEMORY;
 
 	BITMAPINFO WND_BITMAPINFO;
@@ -43,6 +44,9 @@ extern void drawResponsiveRect(
 	float rect_height,
 	Utils::u32 color
 );
+
+extern float widthPercToHeightPerc(float widthPerc);
+extern float heightPercToWidthPerc(float heightPerc);
 
 }
 #endif

@@ -9,28 +9,7 @@ namespace Game {
 
 bool GAME_RUNNING = true;
 
-Input::Input input = {};
-
-void handlePlayerInput(int vkCode, bool isDown) {
-	switch (vkCode) {
-	case VK_UP: {
-		input.buttons[Input::BUTTON_UP].hasChanged = isDown != input.buttons[Input::BUTTON_UP].isDown;
-		input.buttons[Input::BUTTON_UP].isDown = isDown;
-	} break;
-	case VK_DOWN: {
-		input.buttons[Input::BUTTON_DOWN].hasChanged = isDown != input.buttons[Input::BUTTON_DOWN].isDown;
-		input.buttons[Input::BUTTON_DOWN].isDown = isDown;
-	} break;
-	case VK_RIGHT: {
-		input.buttons[Input::BUTTON_RIGHT].hasChanged = isDown != input.buttons[Input::BUTTON_RIGHT].isDown;
-		input.buttons[Input::BUTTON_RIGHT].isDown = isDown;
-	} break;
-	case VK_LEFT: {
-		input.buttons[Input::BUTTON_LEFT].hasChanged = isDown != input.buttons[Input::BUTTON_LEFT].isDown;
-		input.buttons[Input::BUTTON_LEFT].isDown = isDown;
-	} break;
-	}
-}
+Input::Input inputPlayerOne = {}, inputPlayerTwo = {};
 
 void checkWndMsgs(MSG* message, HWND* window) {
 	while (PeekMessage(message, *window, 0, 0, PM_REMOVE)) {
@@ -41,7 +20,12 @@ void checkWndMsgs(MSG* message, HWND* window) {
 			Utils::u32 vkCode = (Utils::u32)message->wParam;
 			bool isDown = ((message->lParam & (1 << 31)) == 0);
 
-			handlePlayerInput(vkCode, isDown);
+			if (vkCode > 0x40) {
+				Input::handleInput(vkCode, isDown, &inputPlayerOne);
+			}
+			else {
+				Input::handleInput(vkCode, isDown, &inputPlayerTwo);
+			}
 		} break;
 
 		default: {
@@ -53,14 +37,33 @@ void checkWndMsgs(MSG* message, HWND* window) {
 }
 
 void simulateGame() {
-	Render::clearScreen(0xff5500);
-	if (isDown(Input::BUTTON_UP, &input)) Player::y += Player::speed * Chrono::deltaTime;
-	if (isDown(Input::BUTTON_DOWN, &input)) Player::y -= Player::speed * Chrono::deltaTime;
-	if (isDown(Input::BUTTON_RIGHT, &input)) Player::x += Player::speed * Chrono::deltaTime;
-	if (isDown(Input::BUTTON_LEFT, &input)) Player::x -= Player::speed * Chrono::deltaTime;
-	Render::drawHeightResponsiveRect(Player::x, Player::y, 10, 10, 0x00ff22);
-	Render::drawHeightResponsiveRect(30, 30, 5, 5, 0x00ff22);
-	Render::drawHeightResponsiveRect(25, 0, 8, 20, 0x00ff22);
+	Render::clearScreen(Utils::PALETTE.complementary.darker); // BORDER
+	Render::drawResponsiveRect(
+		5,
+		5, 
+		90,
+		90, 
+		Utils::PALETTE.complementary.foggy
+	);  // ARENA
+
+	Player::movePlayer(&Player::PLAYER_ONE, &inputPlayerOne);
+	Player::movePlayer(&Player::PLAYER_TWO, &inputPlayerTwo);
+
+	Render::drawHeightResponsiveRect(
+		Player::PLAYER_ONE.x,
+		Player::PLAYER_ONE.y,
+		Player::PLAYER_ONE.width,
+		Player::PLAYER_ONE.height,
+		Utils::PALETTE.secondary.main
+	);  // PLAYER_ONE
+
+	Render::drawHeightResponsiveRect(
+		Player::PLAYER_TWO.x,
+		Player::PLAYER_TWO.y,
+		Player::PLAYER_TWO.width,
+		Player::PLAYER_TWO.height,
+		Utils::PALETTE.primary.main
+	);  // PLAYER_TWO
 }
 
 void runGame(HWND* window) {
@@ -68,6 +71,7 @@ void runGame(HWND* window) {
 	HDC hdc = GetDC(*window);
 
 	Chrono::startChrono();
+	Player::initializePlayers();
 	
 	// Game loop
 	while (GAME_RUNNING) {
@@ -76,7 +80,8 @@ void runGame(HWND* window) {
 
 		// Reset the changed state of each button every frame
 		for (int i = 0; i < Input::BUTTON_COUNT; i++) {
-			input.buttons[i].hasChanged = false;
+			inputPlayerOne.buttons[i].hasChanged = false;
+			inputPlayerTwo.buttons[i].hasChanged = false;
 		}
 
 		// This checks for window messages (docs: https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-peekmessagea)

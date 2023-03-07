@@ -25,6 +25,9 @@ extern bool isDown(int b, Input* input);
 extern bool isPressed(int b, Input* input);
 extern bool isReleased(int b, Input* input);
 
+extern void changeInputValue(Input* input, bool isDown, ButtonsEnum button);
+extern void handleInput(int vkCode, bool isDown, Input* input);
+
 }
 
 #endif

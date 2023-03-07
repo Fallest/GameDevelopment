@@ -29,13 +29,14 @@ namespace Render {
 	}
 
 	/**
-	 * Receives the lower-left corner coordinates (as a percentage), and draws a rectangle given its height(%), width(%), and color.
-	 * The size of the rect is responsive on width, not on height.
+	 * Receives the lower-left corner coordinates(%), and draws a rectangle given its height(%), width(%), and color.
+	 * The position is absolute (responsive on both height and width).
+	 * The size of the rect is responsive on height.
 	 */
 	void
 		drawHeightResponsiveRect(float x, float y, float rect_width, float rect_height, Utils::u32 color) {
 		// Change to pixels
-		x *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
+		x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 		y *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 		rect_width *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 		rect_height *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
@@ -46,11 +47,16 @@ namespace Render {
 		drawRectInPixels(x, y, x1, y1, color);
 	}
 
+	/**
+	 * Receives the lower-left corner coordinates(%), and draws a rectangle given its height(%), width(%), and color.
+	 * The position is absolute (responsive on both height and width).
+	 * The size of the rect is responsive on width.
+	 */
 	void
 		drawWidthResponsiveRect(float x, float y, float rect_width, float rect_height, Utils::u32 color) {
 		// Change to pixels
 		x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
-		y *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
+		y *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 		rect_width *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 		rect_height *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 
@@ -60,6 +66,11 @@ namespace Render {
 		drawRectInPixels(x, y, x1, y1, color);
 	}
 
+	/**
+	 * Receives the lower-left corner coordinates(%), and draws a rectangle given its height(%), width(%), and color.
+	 * The position is absolute (responsive on both height and width).
+	 * The size of the rect is responsive on height and width.
+	 */
 	void
 		drawResponsiveRect(float x, float y, float rect_width, float rect_height, Utils::u32 color) {
 		// Change to pixels
@@ -72,5 +83,13 @@ namespace Render {
 		int y1 = y + rect_height;
 
 		drawRectInPixels(x, y, x1, y1, color);
+	}
+
+	float widthPercToHeightPerc(float widthPerc) {
+		return (widthPerc * RENDER_STATE.WND_HEIGHT) / (RENDER_STATE.WND_WIDTH);
+	}
+
+	float heightPercToWidthPerc(float heightPerc) {
+		return (heightPerc * RENDER_STATE.WND_HEIGHT) / (RENDER_STATE.WND_WIDTH);
 	}
 }

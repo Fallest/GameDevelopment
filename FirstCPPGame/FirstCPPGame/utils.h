@@ -14,5 +14,24 @@ typedef unsigned long long u64;
 
 extern int clamp(int min, int val, int max);
 
+extern float floatClamp(float min, float val, float max);
+
+struct Color {
+	u32 main;
+	u32 darker;
+	u32 dark;
+	u32 foggy;
+	u32 light;
+};
+
+struct Colors {
+	Color primary;
+	Color secondary;
+	Color complementary;
+	Color text;
+};
+
+extern Colors PALETTE;
+
 }
 #endif
