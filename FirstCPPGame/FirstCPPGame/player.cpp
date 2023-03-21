@@ -2,54 +2,52 @@
 #include "chrono.h"
 #include "render.h"
 #include "utils.h"
+#include <cmath>
 
 namespace Player {
 
+	// TODO Move most of this to the initialization
 	float playerHeight = 20.f, playerWidth = 5.f;
 	float playerSpeed = 0.f;
 	float acceleration = 6.f;
-	float maxSpeed = 15.f;
+	int maxSpeed = 15;
 	float friction = 2.f;
-
-	// Make this MORE FUN (or annoying)
-	bool BOUNCY = false;
 
 	Player PLAYER_ONE, PLAYER_TWO;
 
 	void movePlayer(Player* player, Input::Input* input) {
-		float playerPos = player->y;
-		float playerSpeed = player->speed;
+		Physics::Point2 playerPos = player->position;
+		Physics::Vector2 playerSpeed = player->speed;
 
 		// Input control
 		if (isDown(Input::BUTTON_UP, input)) {
-			playerSpeed += (acceleration * Chrono::deltaTime);
+			playerSpeed = Physics::sumVectors(
+				playerSpeed, 
+				{ {0, 0}, {0, (int)(acceleration * Chrono::deltaTime)} } // ONLY VERTICAL
+			);
 		}
 			
 		if (isDown(Input::BUTTON_DOWN, input)) {
-			playerSpeed -= (acceleration * Chrono::deltaTime);
+			playerSpeed = Physics::sumVectors(
+				playerSpeed,
+				{ {0, 0}, {0, -(int)(acceleration * Chrono::deltaTime)} } // ONLY VERTICAL
+			);
+				
 		}
 
-		// Variable updates
-		playerSpeed = Utils::floatClamp(-maxSpeed, playerSpeed, maxSpeed);
-		playerPos += playerSpeed;
+		// Limit the speed
+		playerSpeed = Physics::clampVector2({ {0, -maxSpeed}, {0, maxSpeed} }, playerSpeed);
 
-		player->speed = playerSpeed;
-		player->y = Utils::floatClamp(5.f, playerPos, 95.f - playerHeight);
-
-		// Friction control
-		if (player->speed > 0) {
-			player->speed -= (friction * Chrono::deltaTime);
-		}
-		else if (player->speed < 0) {
-			player->speed += (friction * Chrono::deltaTime);
+		// Control the border
+		if (player->position.y == 5 || player->position.y == 95.f - player->size.end.y) {
+			playerSpeed = { {0, 0}, {0, 0} };
 		}
 
-		// Boundaries control
-		if (player->y == 5 || player->y == 95.f - playerHeight) {
-			player->speed = BOUNCY ? -player->speed : 0;
-		}
+		// Move the player
+		player->move(playerSpeed);		
 	}
 
+	// TODO Update the player initialization with the new physics update
 	void initializePlayers() {
 		PLAYER_ONE = {
 			10,

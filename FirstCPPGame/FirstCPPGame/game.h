@@ -1,10 +1,13 @@
 #ifndef FIRSTCPPGAME_GAME_H
 #define FIRSTCPPGAME_GAME_H
 #include <Windows.h>
+#include "physics.h"
 
 namespace Game {
 
 	extern bool GAME_RUNNING;
+
+	extern Physics::Area ARENA;
 
 	void checkWndMsgs(MSG* message, HWND* window);
 

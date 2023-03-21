@@ -6,6 +6,8 @@
 #include "player.h"
 
 namespace Game {
+	
+static Physics::Vector2 ARENA = { {0, 5}, {5, 95} };
 
 bool GAME_RUNNING = true;
 
@@ -36,13 +38,11 @@ void checkWndMsgs(MSG* message, HWND* window) {
 	}
 }
 
+// TODO Update all Player and Render references
 void simulateGame() {
 	Render::clearScreen(Utils::PALETTE.complementary.darker); // BORDER
 	Render::drawResponsiveRect(
-		5,
-		5, 
-		90,
-		90, 
+		ARENA,
 		Utils::PALETTE.complementary.foggy
 	);  // ARENA
 
