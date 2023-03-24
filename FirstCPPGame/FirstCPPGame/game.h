@@ -7,7 +7,7 @@ namespace Game {
 
 	extern bool GAME_RUNNING;
 
-	extern Physics::Area ARENA;
+	extern Physics::Vector2 ARENA;
 
 	void checkWndMsgs(MSG* message, HWND* window);
 

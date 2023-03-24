@@ -42,9 +42,10 @@ namespace Render {
 		drawHeightResponsiveRect(Physics::Vector2 rect, Utils::u32 color) {
 		// Change to pixels
 		rect.start.x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
-		rect.end.x *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 		rect.start.y *= (RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
+		rect.end.x *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 		rect.end.y *= (RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
+		rect.end = Physics::sumPoints(rect.end, rect.start);
 
 		drawRectInPixels(rect, color);
 	}
@@ -58,8 +59,8 @@ namespace Render {
 		drawWidthResponsiveRect(Physics::Vector2 rect, Utils::u32 color) {
 		// Change to pixels
 		rect.start.x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
-		rect.end.x *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
-		rect.start.y *= (RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
+		rect.start.y *= (RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
+		rect.end.x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 		rect.end.y *= (RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 
 		drawRectInPixels(rect, color);
@@ -73,8 +74,8 @@ namespace Render {
 	void drawResponsiveRect(Physics::Vector2 rect, Utils::u32 color) {
 		// Change to pixels
 		rect.start.x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
-		rect.end.x *= ((float)RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
-		rect.start.y *= (RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
+		rect.start.y *= (RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
+		rect.end.x *= ((float)RENDER_STATE.WND_WIDTH) * RENDER_SCALE;
 		rect.end.y *= (RENDER_STATE.WND_HEIGHT) * RENDER_SCALE;
 
 		drawRectInPixels(rect, color);

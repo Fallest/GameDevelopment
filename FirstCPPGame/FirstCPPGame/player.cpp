@@ -6,14 +6,12 @@
 
 namespace Player {
 
-	// TODO Move most of this to the initialization
-	float playerHeight = 20.f, playerWidth = 5.f;
-	float playerSpeed = 0.f;
+	// TODO Move most of this to the 
 	float acceleration = 6.f;
 	int maxSpeed = 15;
-	float friction = 2.f;
 
-	Player PLAYER_ONE, PLAYER_TWO;
+	Player* PLAYER_ONE;
+	Player* PLAYER_TWO;
 
 	void movePlayer(Player* player, Input::Input* input) {
 		Physics::Point2 playerPos = player->position;
@@ -32,7 +30,6 @@ namespace Player {
 				playerSpeed,
 				{ {0, 0}, {0, -(int)(acceleration * Chrono::deltaTime)} } // ONLY VERTICAL
 			);
-				
 		}
 
 		// Limit the speed
@@ -49,19 +46,19 @@ namespace Player {
 
 	// TODO Update the player initialization with the new physics update
 	void initializePlayers() {
-		PLAYER_ONE = {
-			10,
-			50.f - (playerHeight / 2.f),
-			playerHeight,
-			playerWidth,
-			playerSpeed
-			};
-		PLAYER_TWO = {
-			90 - Render::widthPercToHeightPerc(playerWidth),
-			50.f - (playerHeight / 2.f),
-			playerHeight,
-			playerWidth,
-			playerSpeed
-		};
+		float friction = 2.f;
+		int playerHeight = 20, playerWidth = 5;
+		int playerSpeed = 0;
+
+		PLAYER_ONE = new Player(
+			{ 90 - (int)Render::widthPercToHeightPerc(playerWidth), (int)(50.f - (playerHeight / 2.f)) },
+			{{0, 0}, {playerWidth, playerHeight}},
+			{{0, 0}, {0, playerSpeed}},
+			2.f);
+		PLAYER_TWO = new Player(
+			{ 10, (int)(50.f - (playerHeight / 2.f)) },
+			{ {0, 0}, {playerWidth, playerHeight} },
+			{ {0, 0}, {0, playerSpeed} },
+			2.f);
 	}
 }

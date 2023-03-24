@@ -41,8 +41,10 @@ namespace Player {
 		}
 	};
 
-	extern Player PLAYER_ONE;
-	extern Player PLAYER_TWO;
+	extern Player* PLAYER_ONE;
+	extern Player* PLAYER_TWO;
+
+	extern void movePlayer(Player* player, Input::Input* input);
 
 	extern void initializePlayers();
 }

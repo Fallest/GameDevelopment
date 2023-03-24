@@ -7,7 +7,7 @@
 
 namespace Game {
 	
-static Physics::Vector2 ARENA = { {0, 5}, {5, 95} };
+static Physics::Vector2 ARENA = { {5, 5}, {95, 95} };
 
 bool GAME_RUNNING = true;
 
@@ -46,22 +46,16 @@ void simulateGame() {
 		Utils::PALETTE.complementary.foggy
 	);  // ARENA
 
-	Player::movePlayer(&Player::PLAYER_ONE, &inputPlayerOne);
-	Player::movePlayer(&Player::PLAYER_TWO, &inputPlayerTwo);
+	Player::movePlayer(Player::PLAYER_ONE, &inputPlayerOne);
+	Player::movePlayer(Player::PLAYER_TWO, &inputPlayerTwo);
 
 	Render::drawHeightResponsiveRect(
-		Player::PLAYER_ONE.x,
-		Player::PLAYER_ONE.y,
-		Player::PLAYER_ONE.width,
-		Player::PLAYER_ONE.height,
+		{ Player::PLAYER_ONE->position, Player::PLAYER_ONE->size.end },
 		Utils::PALETTE.secondary.main
 	);  // PLAYER_ONE
 
 	Render::drawHeightResponsiveRect(
-		Player::PLAYER_TWO.x,
-		Player::PLAYER_TWO.y,
-		Player::PLAYER_TWO.width,
-		Player::PLAYER_TWO.height,
+		{ Player::PLAYER_TWO->position, Player::PLAYER_TWO->size.end },
 		Utils::PALETTE.primary.main
 	);  // PLAYER_TWO
 }

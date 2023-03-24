@@ -1,2 +1,14 @@
-﻿  player.cpp
+﻿  render.cpp
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(44,51): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(45,45): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(46,50): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(47,43): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(61,51): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(62,45): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(63,49): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(64,42): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(76,51): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(77,45): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(78,49): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\FirstCPPGame\render.cpp(79,43): warning C4244: '*=': conversión de 'float' a 'int'; posible pérdida de datos
   FirstCPPGame.vcxproj -> C:\Users\falle\Documents\GameDevelopment\FirstCPPGame\x64\Debug\FirstCPPGame.exe
