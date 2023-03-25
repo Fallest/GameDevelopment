@@ -6,7 +6,7 @@ namespace Physics {
 * Calculates the distance between 2 points given the coordinates of
 * each one
 */
-int distance(int x0, int y0, int x1, int y1) {
+int distance(float x0, float y0, float x1, float y1) {
 	return sqrt(pow(x1 - x0, 2) + pow(y1 - y0, 2));
 }
 
@@ -22,6 +22,15 @@ int distance(Point2 start, Point2 end) {
 */
 int distance(Vector2 vector) {
 	return distance(vector.start, vector.end);
+}
+
+Point2 clampPoint2(Vector2 limiter, Point2 point) {
+	if (limiter.start.x > point.x) point.x = limiter.start.x;
+	if (limiter.start.y > point.y) point.y = limiter.start.y;
+	if (limiter.end.x < point.x) point.x = limiter.end.x;
+	if (limiter.end.y < point.y) point.y = limiter.end.y;
+
+	return point;
 }
 
 /**

@@ -7,7 +7,7 @@
 
 namespace Game {
 	
-static Physics::Vector2 ARENA = { {5, 5}, {95, 95} };
+Physics::Vector2 ARENA = { {5, 5}, {95, 95} };
 
 bool GAME_RUNNING = true;
 

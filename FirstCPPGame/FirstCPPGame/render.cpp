@@ -16,14 +16,14 @@ namespace Render {
 	void
 		drawRectInPixels(Physics::Vector2 rect, Utils::u32 color) {
 		rect = Physics::clampVector2(
-			{ {0, 0}, {RENDER_STATE.WND_WIDTH, RENDER_STATE.WND_HEIGHT} }, 
+			{ {0, 0}, {(float)RENDER_STATE.WND_WIDTH, (float)RENDER_STATE.WND_HEIGHT} },
 			rect
 		);
 
 		for (int y = rect.start.y; y < rect.end.y; y++) {
 			Utils::u32* pixel = 
 				(Utils::u32*)RENDER_STATE.WND_MEMORY + 
-				rect.start.x +
+				(int)rect.start.x +
 				y * 
 				RENDER_STATE.WND_WIDTH;
 

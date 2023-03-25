@@ -3,7 +3,7 @@
 
 namespace Physics {
 	struct Point2 {
-		int x, y;
+		float x, y;
 	};
 
 	struct  Vector2 {
@@ -28,7 +28,7 @@ namespace Physics {
 	 * Calculates the distance between 2 points given the coordinates of
 	 * each one
 	 */
-	extern int distance(int x0, int y0, int x1, int y1);
+	extern int distance(float x0, float y0, float x1, float y1);
 
 	/**
 	 * Calculates the distance between 2 points given the two Point2 objects.
@@ -39,6 +39,8 @@ namespace Physics {
 	 * Calculates the length of a vector.
 	 */
 	extern int distance(Vector2 vector);
+
+	extern Point2 clampPoint2(Vector2 limiter, Point2 point);
 
 	extern Vector2 clampVector2(Vector2 limiter, Vector2 vector);
 
