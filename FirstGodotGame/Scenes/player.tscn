@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgvols8w8rohg"]
+
+[ext_resource type="Script" path="res://assets/scripts/Player.gd" id="1_s74ou"]
+[ext_resource type="Texture2D" uid="uid://ecglaja4mxxp" path="res://assets/player-idle-1.png" id="2_q175r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_inlqd"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_r4y20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bjtrw"]
+resource_name = "what"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3n858"]
+_data = {
+"RESET": SubResource("Animation_r4y20"),
+"what": SubResource("Animation_bjtrw")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s74ou")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -14)
+texture = ExtResource("2_q175r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_inlqd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3n858")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
