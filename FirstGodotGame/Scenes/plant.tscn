@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://58o86luknq2r"]
+
+[ext_resource type="Texture2D" uid="uid://b4adtwql4d4kn" path="res://assets/plant-big.png" id="1_nr7op"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dp56v"]
+radius = 14.0357
+
+[node name="Plant" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -22)
+texture = ExtResource("1_nr7op")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dp56v")
