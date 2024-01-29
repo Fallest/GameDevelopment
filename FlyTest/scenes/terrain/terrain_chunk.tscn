@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxijt5n562ohr"]
+
+[ext_resource type="Texture2D" uid="uid://br0e7f5ioo54c" path="res://assets/warped_files/PNG/environment/environment-preview.png" id="1_x1geg"]
+
+[node name="terrain_chunk" type="RigidBody2D"]
+lock_rotation = true
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1geg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-31, -83, -29, 80, 139, 81, 178, 48, 220, 50, 254, 31, 331, 32, 389, 80, 508, 79, 527, 67, 529, -80, -31, -83)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(527, 144, -496, 144, -496, 80, -336, 80, -301, 48, -272, 48, -232, 80, -128, 80, -130, -81, -184, -80, -256, -48, -312, -48, -352, -16, -496, -16, -496, -64, -392, -64, -304, -144, -280, -152, -264, -160, -120, -160, -96, -128, -48, -128, -16, -160, 528, -160, 528, -176, -528, -176, -528, 176, 528, 176)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-112, 16, -128, 16, -128, 32, -112, 32)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+position = Vector2(80, -32)
+polygon = PackedVector2Array(-112, 16, -160, 16, -160, 32, -112, 32)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 80)
+polygon = PackedVector2Array(-96, 16, -160, 16, -160, 32, -96, 32)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 80)
+polygon = PackedVector2Array(160, -160, 160, -240, 192, -240, 192, -160)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 80)
+polygon = PackedVector2Array(-250, -205, -232, -224, -232, -240, -256, -240, -256, -216)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="."]
+position = Vector2(48, 81)
+polygon = PackedVector2Array(-445, 50, -422, 53, -414, 58, -414, 63, -453, 63)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="."]
+position = Vector2(307, 81)
+polygon = PackedVector2Array(-445, 50, -422, 53, -414, 58, -414, 63, -453, 63)

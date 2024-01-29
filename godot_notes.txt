@@ -1,0 +1,8 @@
+Useful asset libs:
+-Dialogue manager
+-Save Access (C#)
+-Input Helper, for accessibility and other types of input devices.
+-Godot Gameplay Systems
+-Palette swap shader with animation support
+-PlatformerController2D
+-Fancy particles

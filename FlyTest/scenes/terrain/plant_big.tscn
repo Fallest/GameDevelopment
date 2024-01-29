@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds40yefl5gcs3"]
+
+[ext_resource type="Texture2D" uid="uid://v5g6p30vt3w1" path="res://assets/warped_files/PNG/environment/props/plant-big.png" id="1_cpm7k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_872l8"]
+height = 48.0
+
+[node name="plant_big" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cpm7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_872l8")

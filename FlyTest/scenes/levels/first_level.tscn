@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8xf2nw6yq48o"]
+
+[ext_resource type="PackedScene" uid="uid://cxijt5n562ohr" path="res://scenes/terrain/terrain_chunk.tscn" id="1_n0u2y"]
+[ext_resource type="PackedScene" uid="uid://ds40yefl5gcs3" path="res://scenes/terrain/plant_big.tscn" id="2_ocqgi"]
+[ext_resource type="PackedScene" uid="uid://ftakm0btunh3" path="res://scenes/player/player_2.tscn" id="3_ivpyd"]
+
+[node name="first_level" type="Node2D"]
+
+[node name="terrain_chunk" parent="." instance=ExtResource("1_n0u2y")]
+position = Vector2(528, 176)
+
+[node name="plant_big" parent="." instance=ExtResource("2_ocqgi")]
+position = Vector2(241, 296)
+
+[node name="player_2" parent="." instance=ExtResource("3_ivpyd")]
+position = Vector2(49, 140)

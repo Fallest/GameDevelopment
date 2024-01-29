@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://tywc2ctt0bex"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_dv2dp"]
+[ext_resource type="SpriteFrames" uid="uid://bv14xaqog1l4c" path="res://scenes/player/player.tres" id="2_rbcro"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j34cn"]
+height = 36.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+floor_stop_on_slope = false
+script = ExtResource("1_dv2dp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+sprite_frames = ExtResource("2_rbcro")
+animation = &"player_idle_animation"
+frame_progress = 0.508669
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j34cn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_top_margin = 0.13
+drag_bottom_margin = 0.13
+editor_draw_limits = true
+editor_draw_drag_margin = true
